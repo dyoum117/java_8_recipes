@@ -39,5 +39,10 @@ public class MethodReferencesDemo {
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
         System.out.println(sorted);
+
+        Stream.of("z", "y", "x", "w")
+                .sorted((s1, s2) -> s1.compareTo(s2))
+                .forEach(x -> System.out.println(x));
+
     }
 }
