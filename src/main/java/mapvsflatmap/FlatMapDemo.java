@@ -34,6 +34,8 @@ public class FlatMapDemo {
                 .map(customer -> customer.getOrders().stream()) // function<Customer,Stream<Order>>
                 .forEach(System.out::println);
 
+        System.out.println("FLATMAP DEMO V1");
+
         // stream() on an empty collection is already an empty Stream
         customers.stream()
                 .flatMap(customer -> customer.getOrders().stream()) // function<Customer,Stream<Order>>
@@ -42,6 +44,8 @@ public class FlatMapDemo {
         // flatMap 1-many customer to orders.stream() --> Stream<Order>
         // Note: extra detail included just for illustration;
         //      stream() on an empty collection already returns an empty stream
+        System.out.println("FLATMAP DEMO V2");
+
         customers.stream()
                 .flatMap(customer ->
                         customer.getOrders().size() == 0 ? Stream.empty() :
