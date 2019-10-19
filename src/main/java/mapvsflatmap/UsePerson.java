@@ -59,7 +59,18 @@ public class UsePerson {
     public List<Person> createPersonListUsingNew() {
         return names.stream()
                 .map(Person::new)
-                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+                .collect(LinkedList::new,
+                         LinkedList::add,
+                         LinkedList::addAll);
+    }
+
+    public List<Person> createPersonListUsingNewWithLambdas() {
+        return names.stream()
+                    .map(Person::new)
+                    .collect(() -> new LinkedList<Person>(),
+                             (people, e) -> people.add(e),
+                             (totalPeopleCollection, people) ->
+                                     totalPeopleCollection.addAll(people)); // not called unless parallel
     }
 
 }

@@ -1,8 +1,11 @@
 package functionpackage;
 
+import java.util.Arrays;
+import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ImplementConsumer {
     private static Logger log = Logger.getLogger(ImplementConsumer.class.getName());
@@ -19,9 +22,20 @@ public class ImplementConsumer {
                 });
 
         IntStream.of(3, 1, 4, 1, 5, 9)
-                .forEach(n -> System.out.println(n));
+                .forEach(x -> System.out.println(x));
 
         IntStream.of(3, 1, 4, 1, 5, 9)
                 .forEach(System.out::println);
+
+        // In Java 8, must declare <String> on RHS
+        // In Java 9+, can use diamond operator
+        Consumer<String> consumer = new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        };
+        Stream.of("this", "is", "a", "list")
+              .forEach(consumer);
     }
 }

@@ -32,10 +32,11 @@ public class OptionalDemo {
     }
 
     public static void main(String[] args) {
-        Optional<String> first = Stream.of("this is a list of strings".split(" "))
+        String first = Stream.of("this is a list of strings".split(" "))
                 .filter(s -> s.length() > 10)
-                .findFirst();
-        System.out.println(first.orElseThrow(NoSuchElementException::new));
+                .findFirst().orElse("No string satisfying predicate found");
+        System.out.println(first);
+        // System.out.println(first.orElseThrow(NoSuchElementException::new));
 
     }
 }

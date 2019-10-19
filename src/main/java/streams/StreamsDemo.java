@@ -1,10 +1,12 @@
 package streams;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
@@ -43,10 +45,7 @@ public class StreamsDemo {
                      // .peek(x -> System.out.println("The value is " + x))
                      // .reduce(BigDecimal.ZERO, BigDecimal::add);
                      .reduce(BigDecimal.ZERO,
-                             (accumulator, val) -> {
-                                 System.out.printf("%s, %s%n", accumulator, val);
-                                 return accumulator.add(val);
-                             });
+                             (accumulator, val) -> accumulator.add(val));
     }
 
     public Double sumRandoms1(int num) {
@@ -71,5 +70,25 @@ public class StreamsDemo {
                 .parallel()
                 //.limit(num)
                 .sum();
+    }
+
+    public static void filterNegativeIndex()
+    {
+        List<List<Boolean>> l = new ArrayList<>();
+        List<Boolean> inner_l = new ArrayList<>();
+        inner_l.add(new Boolean(false));
+        l.add(inner_l);
+
+//        l.stream()
+//                .filter(e -> IntStream.range(1, l.size())
+//                        .filter(i -> )
+
+        IntStream stream = IntStream.range(1, l.size());
+
+    }
+
+    public static void main(String[] args)
+    {
+        filterNegativeIndex();
     }
 }

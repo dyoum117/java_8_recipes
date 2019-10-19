@@ -16,8 +16,7 @@ public class Person {
 
     public Person(String... names) {
         System.out.println("Varargs ctor, names=" + Arrays.asList(names));
-        name = Arrays.stream(names)
-                .collect(Collectors.joining(" ")); // concats all strings together
+        name = String.join(" ", names); // concats all strings together
     }
 
     public Person(Person p) {

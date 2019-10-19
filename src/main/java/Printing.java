@@ -7,5 +7,12 @@ public class Printing {
 
         strings.forEach(System.out::println);
         strings.forEach(s -> System.out.println("The word is " + s));
+
+
+        String DOUBLE_QUOTE = "\"";
+        System.out.println(DOUBLE_QUOTE);
+
+        String SINGLE_QUOTE = "\'";
+        System.out.println(SINGLE_QUOTE);
     }
 }

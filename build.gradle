@@ -1,13 +1,7 @@
 plugins {
-    id 'com.gradle.build-scan' version '1.10.1'
     id 'java-library'
     id 'eclipse'
     id "me.champeau.gradle.jmh" version "0.4.3"
-}
-
-buildScan {
-    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
-    licenseAgree = 'yes'
 }
 
 sourceCompatibility = 1.8
@@ -20,6 +14,10 @@ jmh {
     duplicateClassesStrategy = DuplicatesStrategy.WARN
     include = ['parallel.DoublingDemo.*']
     // include = ['parallel.CustomPoolBenchmark.*']
+}
+
+test {
+    maxParallelForks = Runtime.runtime.availableProcessors() / 2
 }
 
 dependencies {
